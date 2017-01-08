@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> -->
+			<link rel="stylesheet" type="text/css" href="prod/style.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+</head>
+<body>
+<style type="text/css">
+	*{font-family:'Lato', sans-serif;box-sizing: border-box}
+	.logo{font-weight: bold; font-size:16px; text-align: center;text-transform: uppercase;margin:10px auto;position:relative;}
+	.header{margin:20px 0;border-bottom:1px solid #1a1a1a;padding-bottom: 20px;}
+	.header ul{text-align:center;}
+	.header li{list-style: none;display:inline-block;text-transform: uppercase;font-size:12px;margin:0 15px;}
+	.nav{font: 18px 'Lato', sans-serif;text-align: center; letter-spacing: 1px;background:black;color:white;-webkit-font-smoothing:antialiased;}
+	.nav li{display: inline-block;padding: 5px 20px}
+	.contentArea{
+		border:1px solid red;
+		max-width:960px;
+		margin:0 auto;
+		overflow: hidden;
+	}
+	#selector{
+		margin-left:10px;
+	}
+	.ProductDetailContainer{
+		float:left;
+		width:40%;
+		border: 1px solid black;
+		padding:10px;
+	}
+	.productBox{
+		position:relative;
+		width:980px;
+		/*border:1px solid pink;*/
+		margin:0 auto;
+	}
+	.ProductImage{
+		float:left;
+		width:40%;
+		height:400px;
+		background: rgba(0,0,0,.2);
+	}
+	.MainImage{
+		width: 400px;
+		height:533px;
+	}
+	.Thumnails{
+		height:100px;
+		width:100px;
+		border:2px solid rgba(0,0,0,.7);
+	}
+	.Thumnails+.Thumnails{
+		margin-left: 10px;
+	}
+	.buyButton{
+		position:relative;
+		margin:0 auto 25px;
+		padding:10px;
+		background:black;
+		color: white;
+		width:50%;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	.sizeButton li{
+		display:inline-block;
+		padding:5px;
+		margin:0 5px;
+		border: 1px solid black;
+		opacity:.25;
+	}
+	.sizeButton{display:none;}
+	.sizeButton:first-child{
+		display:block;
+	}
+	.sizeButton li.on{
+		opacity:1;
+	}
+	.sizeButton:hover{
+		display:block;
+	}
+	.ProductCopy{
+		float:left;
+		width:50%;
+		border: 1px solid black
+	}
+	.colorThumbNail{
+		height:24px;
+		width:24px;
+		border:1px solid white;
+		display:inline-block;
+		outline:1px solid white;
+		margin-bottom:15px;
+	}
+	.colorThumbNail + .colorThumbNail{
+		margin-left:10px;
+	}
+	.colorThumbNail.on{
+		outline:1px solid black;
+	}
+	.sizeWrapper{
+		margin-bottom:25px;
+	}
+	.sizeBox{list-style-type: none;margin:0;padding:0;}
+	.sizeBox li{font-size:10px;padding:5px;display:inline-block;border:1px solid rgba(0,0,0,.1);color:rgba(0,0,0,.1);margin-right:15px;margin-bottom:15px;width:100px;text-align: center;text-transform: uppercase;} 
+	.sizeBox [data-status="true"]{
+		border:1px solid black;
+		cursor:pointer;
+		color:black;
+	}
+	.productInfo h1{
+		font: bold 22px'Source Sans Pro', sans-serif;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+	}
+	.itemNumber, .itemPrice, .itemQuantity,.colors, .sizes{
+		display:block;
+		margin-bottom: 15px;
+		font-size:12px;
+		text-transform: uppercase;
+	}
+	.checkOutWrapper{
+		padding:10px;
+		background:#1a1a1a;
+		color:white;
+	}
+	.checkOutContainer{
+		max-width:960px;
+		margin:0 auto;
+		font-size:12px;
+		text-align:right;
+	}
+	.productInfoBox{
+		float:right;
+		width: 40%;
+		padding:0 20px;
+	}
+
+	.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+.overlay{
+	position: absolute;
+	top:0;
+	right:0;
+	/*border:1px solid lime;*/
+	background: rgba(0,0,0,.1);
+	display:none;
+	height:533px;
+	width:40%;
+	overflow: hidden;
+	z-index: 1;
+}
+.overlay img{
+	position:absolute;
+}
+.overlay.on{
+	display: block;
+}
+.Sidebar{
+	width:20%;
+	float:left;
+}
+.Sidebar dt{
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom:10px;
+}
+.Sidebar dd{
+	font-size:12px;
+	margin-bottom:5px;
+	color:rgba(0,0,0,.7);
+}
+
+html{
+	height:9000px;
+}
+</style>
+<div id="app"></div>
+<script type="text/javascript" src="prod/bundle.js"></script>
+</body>
+</html>

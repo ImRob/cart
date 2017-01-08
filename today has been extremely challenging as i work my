@@ -1,0 +1,27 @@
+today has been extremely challenging as i work my way through modeling data for a product page app.
+
+my first problem was i had my data as i would have expected it from a server call as demonstrated in 
+
+productData.js
+
+the problem is the nested structure when using that data as is in a react app. updating nested data is a pain in the ass in react since you want to keep things pure. In trivial react tutorials you'll frequently see setState being called on a shallow property, but what happens when you have to update a leaf in a tree. You don't have to go far to find yourself lost. I'll chalk this up to yet another example of '...just one more thing'.
+
+So i gave it a shot at trying to normalize data, and flatten the ugly nested response so that i can access and update without pulling my hair out. 
+
+my first attempt can be seen in:
+
+normalizedRoughDraft.js
+
+This attempt suffered because it was too granular. I started breaking things down too soon. I didn't understand the relationship with my data. I had productInfo, colorInfo, productImages and sizeInfo all as indidivudal objects.
+
+The real issue with my app was having a data set that served 2 masters. The first master is the product page where the user can see what sizes are available in a particular color. The second master is being able to configure that data based on the users interaction. Breaking off peices here and there and constructing a derivative object on the fly. You just can't do this cleanly using a nested structure. You get the whole thing. Or you start having gnarly set state calls. You'll find yourself looking like an ourboros as you chase yourself in a chicken egg game with your data.
+
+So I think I found a decent middle path in structuring my data. At least for tonight. I tested this by seeing if i can construct objects on the fly as i built my data layer. The sucky part is going to be all this searching for unknown object keys by doing Object.keys(obj), which seems like another chicken and egg scenario. Using an object to get an array, but that's the only way i really know about going about this.
+
+I'm hoping that maybe i can buy myself some sanity by giving actual DOM nodes a data- attribute which has a pointer to that specific node. that way when a user clicks it tells me which object it connects to and i don't have to programmatically figure it out.
+
+One last thing. While I've been humbled in trying to model the application state for this, it's also been interesting to consider the difference between the application state and the ui state. it's easy to get lost and hack something together but who knows.
+
+On that note im out. Ill look at this with fresh eyes in the morning
+
+
