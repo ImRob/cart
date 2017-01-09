@@ -28,7 +28,7 @@ export class ProductPage extends Component {
 		this.addItem = this.addItem.bind(this);
 		this.addSize = this.addSize.bind(this);
 		this.quantity = this.quantity.bind(this);
-		// this.changeImage = this.changeImage.bind(this);
+		this.changeImage = this.changeImage.bind(this);
 	}
 	addSize(e){
 		var size = e.target.getAttribute('data-size');
@@ -62,12 +62,15 @@ export class ProductPage extends Component {
 			size:''	
 		}
 	}
-	// changeImage(e){
-	// 	console.log(e.target.getAttribute('data-image'));
-	// 	this.setState({
-	// 		mainImage : e.target.getAttribute('data-image')
-	// 	})
-	// }
+	changeImage(e = this.props.productData.featureImage[0]){
+		// var defaultImage = this.props.productData.featureImage[0];
+		console.log('changeImage');
+		// var image = e.target ? e.target.getAttribute('data-image') : e;
+		console.log(e);
+		this.setState({
+			mainImage : e
+		})
+	}
 	isObjectValid(obj){
 		var valid = true;
 		var itemsCopy = [...this.state.items];
@@ -107,7 +110,7 @@ export class ProductPage extends Component {
 				<Topnav/>
 				<div className="productBox">
 					<Sidebar/>
-					<Lightbox {...this.props} {...this.state}/>
+					<Lightbox {...this.props} {...this.state} changeImage={this.changeImage}/>
 					<div className="productInfoBox">
 						<ProductInfo {...this.state} {...this.props} changeHandler={this.quantity}/>
 						<SizeInfo addColor={this.addColor} addSize={this.addSize} changeImage={this.changeImage} {...this.props} {...this.state}/>

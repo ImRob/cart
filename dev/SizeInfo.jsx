@@ -14,6 +14,7 @@ export class SizeInfo extends Component {
 	selectedColor(e){
 		var evt = e;
 		var itemNo = evt.target.getAttribute('data-number');
+		console.log(e.target.getAttribute('data-image'))
 
 		this.setState({
 			currentSelection: +itemNo
@@ -24,7 +25,7 @@ export class SizeInfo extends Component {
 			})
 			this.props.addColor(e)
 		}
-		// this.props.changeImage(e)
+		this.props.changeImage(e.target.getAttribute('data-image'))
 	}
 	colorMouseLeave(e){
 		var target = e.target;
@@ -36,6 +37,9 @@ export class SizeInfo extends Component {
 			currentSelection:0,
 			colorClicked:false
 		})
+		console.log('passing in: ' + e.target.getAttribute('data-image'));
+		this.props.changeImage()
+
 	}
 	render() {
 		var currentSelection = this.state.currentSelection

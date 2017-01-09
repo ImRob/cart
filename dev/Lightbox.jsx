@@ -3,8 +3,8 @@ import Thumbnail from './Thumbnail';
 
 
 export class Lightbox extends Component {
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state={
 			fullScreen:false,
 			currentImage:0,
@@ -21,11 +21,16 @@ export class Lightbox extends Component {
 		this.setState({
 			currentImage: img
 		})
+		console.log('fooo');
+		console.log(e.target.getAttribute('data-src'));
+		// console.log(this.refs.foo.getAttribute('src'));
+		this.props.changeImage(e.target.getAttribute('data-src'))
 	}
 	hideDetail(){
 		this.setState({
 			fullScreen:false
 		})
+		// this.props.changeImage(this.default)
 	}
 	showDetail(){
 		this.setState({
@@ -33,33 +38,31 @@ export class Lightbox extends Component {
 		})
 	}
 	enlarge(e){
-		var node = this.refs.MainImage;
+		// var node = this.refs.MainImage;
 		var target = e.target.getBoundingClientRect();
 
 		this.setState({
-			left:'-' + (e.clientX - target.left)+'px',
-			top: '-' + (e.clientY - target.top)+'px'
+			left:'-' + ((e.clientX - target.left) * 2)+'px',
+			top: '-' + ((e.clientY - target.top) * 2)+'px'
 		})
 	}
 	render() {
 		return (
 				<div className="ProductImage">
 				
-					<div>
 						<img ref="MainImage"
 							onMouseMove={this.enlarge} 
 							onMouseEnter={this.showDetail}
 							onMouseLeave={this.hideDetail}
 							className="MainImage" 
 							src={'/prod/'+ this.props.mainImage} />
-					</div>
 					<div className="ProductThumbnails">
 					{this.props.productData.featureImage.map(function(img, ind) {
-						return <img onClick={this.selectItem} className="Thumnails" data-img={ind} key={ind} src={'/prod/'+img}/>
+						return <img onClick={this.selectItem} className="Thumnails" data-src={img} data-img={ind} key={ind} src={'/prod/'+img}/>
 					},this)}
 					</div>
 				<div className={`overlay ${this.state.fullScreen ? 'on' : ''}`}>
-					<img src={'/prod/' + this.props.productData.featureImage[this.state.currentImage]} style={{left:this.state.left, top:this.state.top }}/>
+					<img src={'/prod/' + this.props.mainImage} style={{left:this.state.left, top:this.state.top }}/>
 				 </div>
 				</div>
 		);
