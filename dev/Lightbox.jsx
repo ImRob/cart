@@ -55,14 +55,14 @@ export class Lightbox extends Component {
 							onMouseEnter={this.showDetail}
 							onMouseLeave={this.hideDetail}
 							className="MainImage" 
-							src={'/prod/'+ this.props.mainImage} />
+							src={'prod/'+ this.props.mainImage} />
 					<div className="ProductThumbnails">
 					{this.props.productData.featureImage.map(function(img, ind) {
-						return <img onClick={this.selectItem} className="Thumnails" data-src={img} data-img={ind} key={ind} src={'/prod/'+img}/>
+						return <img onClick={this.selectItem} className="Thumnails" data-src={img} data-img={ind} key={ind} src={'prod/'+img}/>
 					},this)}
 					</div>
 				<div className={`overlay ${this.state.fullScreen ? 'on' : ''}`}>
-					<img src={'/prod/' + this.props.mainImage} style={{left:this.state.left, top:this.state.top }}/>
+					<img src={'prod/' + this.props.mainImage} style={{left:this.state.left, top:this.state.top }}/>
 				 </div>
 				</div>
 		);
